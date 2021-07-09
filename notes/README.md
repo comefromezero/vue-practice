@@ -125,7 +125,7 @@ new profile().$mount('#app');
 
 ```
 
-这个文件包含三部分结构:<template>、<script>、<stype scoped>。
+这个文件包含三部分结构:\<template\>、\<script\>、\<stype scoped\>。
 
 此时，我们就定好了一个单文件组件。
 
