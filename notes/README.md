@@ -530,11 +530,11 @@ data、computed、props中的数据都是响应式的。
 
 被 keep-alive 缓存的组件停用时调用。
 
-### 附[!生命周期钩子图示](https://github.com/comefromezero/vue-practice/blob/main/notes/img/lifecycle.png)
+### 附 ![!生命周期钩子图示](https://github.com/comefromezero/vue-practice/blob/main/notes/img/lifecycle.png)
 
 ## Vue实例的加载过程
 
-[!picture](https://github.com/comefromezero/vue-practice/blob/main/notes/img/vueInitInstance.png)
+![picture](https://github.com/comefromezero/vue-practice/blob/main/notes/img/vueInitInstance.png)
 
 
 ## extends 与 mixins
