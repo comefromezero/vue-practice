@@ -344,9 +344,7 @@ methods:{
 }
 
 computed:{
-    test(){
-
-    }
+    test(){}
 }
 //相当于
 computed:{
