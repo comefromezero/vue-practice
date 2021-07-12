@@ -421,7 +421,7 @@ v-if通过删除dom节点以及重新渲染来隐藏和显示一个内容。
 
 ### v-model
 
-v-model用于input，根据input类型的不同而行为不同，默认情况下，其监听input事件，通过修饰符.lazy可以切换到change事件。
+v-model用于input，根据input类型的不同而行为不同，默认情况下，其监听input事件，通过修饰符.lazy可以切换到change事件。其最常用的场景就是绑定input的value。
 
 
 ## computed 和 watch的对比
@@ -536,3 +536,41 @@ data、computed、props中的数据都是响应式的。
 
 ## Vue实例的加载过程
 
+[!picture](https://github.com/comefromezero/vue-practice/blob/main/notes/img/vueInitInstance.png)
+
+
+## extends 与 mixins
+
+这两个选项使用不多，个人认为也就用于需要大量复用代码的场景。
+
+extends允许我们在一个组件中继承成一个组件的options，从而实现代码复用。
+
+这个选项主要用于单文件组件中，当发现一个组件不能满足全部需求时，则可以选择继承其中一部分功能，然后在另外一个组件中编写扩展的功能。
+``` Javascript
+var CompA = { ... }
+
+// 在没有调用 `Vue.extend` 时候继承 CompA
+var CompB = {
+  extends: CompA,
+  ...
+}
+```
+
+这里留下一个问题：extends继承的逻辑是什么？
+
+mixins允许我们在一个组件中接收外部的选项对象，这些mixins对象最终会被合并到组件的options中，然后用于创建实例。
+``` Javascript
+var mixin = {
+  created: function () { console.log(1) }
+}
+var vm = new Vue({
+  created: function () { console.log(2) },
+  mixins: [mixin]
+})
+// => 1
+// => 2
+```
+
+这里再留下一个问题：mixins与本组件中的选项是如何合并的？
+
+这里留下的两个问题是至关重要的，因为这涉及到使用这两个选项的安全问题，如果不熟悉它们的继承与合并逻辑，可能会写出超出意料之外的代码。
