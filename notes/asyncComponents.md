@@ -46,7 +46,9 @@ new Vue({
 
 如果我们想利用webpack将两个异步加载的组件打包成为一个文件，我们给import()中加上这样一个注释即可， /* webpackChunkName: "async" */，然后就变成了这样：
 
-import( /* webpackChunkName: "async" */ './my-async-component'), import( /* webpackChunkName: "async" */'./components/HelloWorld')。
+import( /* webpackChunkName: "async" */ './my-async-component'), import( /* webpackChunkName: "async" */'./components/HelloWorld')，按照webpack的原理来说，
+
+ChunkName相同的两个文件，最终会被打包成为一个文件,所以如果想在别的地方将多个组件打包成为一个文件，只需要将他们的ChunkName设置为一样即可，如何设置？按照上面一样，添加一行注释，冒号后面是值，将值设置为一样。
 
 
 3. 高级异步组件加载
@@ -57,7 +59,7 @@ import( /* webpackChunkName: "async" */ './my-async-component'), import( /* webp
 
 ``` Javascript
 new Vue({
-  // ...
+    // ...
     components: {
         'my-component': () => {
             return {
