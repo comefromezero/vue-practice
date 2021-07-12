@@ -4,7 +4,7 @@
 
 异步组件加载方式有三种：工厂函数加载、、import()加载、高级异步组件加载。
 
-1. 工厂函数加载
+## 1. 工厂函数加载
 
 ``` Javascript
 Vue.component('HelloWorld',function(resolve,reject){     　　//重写HelloWorld组件的定义
@@ -18,7 +18,7 @@ Vue.component('HelloWorld',function(resolve,reject){     　　//重写HelloWorl
 
 如果要用来载入别的组件，只需要修改组件名以及组件路径即可。
 
-2. import()加载
+## 2. import()加载
 
 ``` Javascript
 import Vue from 'vue'
@@ -51,7 +51,7 @@ import( /* webpackChunkName: "async" */ './my-async-component'), import( /* webp
 ChunkName相同的两个文件，最终会被打包成为一个文件,所以如果想在别的地方将多个组件打包成为一个文件，只需要将他们的ChunkName设置为一样即可，如何设置？按照上面一样，添加一行注释，冒号后面是值，将值设置为一样。
 
 
-3. 高级异步组件加载
+## 3. 高级异步组件加载
 
 所谓高级异步组件加载只不过是让用户自定义很多异步组件加载的字段值，而上述两种方式的加载方式中，Vue自己设置了默认的字段值。
 
