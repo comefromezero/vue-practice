@@ -433,6 +433,7 @@ v-model用于input，根据input类型的不同而行为不同，默认情况下
     * 默认情况下，computed只会有getter，但是可以显示的为其创建一个setter，该setter接受一个参数，该参数为computed属性的新设置的值。
     * 不要在computed中使用箭头函数作为回调，因为computed中的箭头函数中的this会绑定到组件定义的环境上下文中（一般情况下为全局上下文）。
     * computed中声明的属性对应的function会在实例加载的时候执行一次，因此不要在function里做超出计算该属性值之外的任何操作，这应该也是Vue不推荐在computed里做复杂计算和异步操作已经API调用了吧。
+    * 被依赖的属性只要在computed属性的回调函数中参与一次计算，那么其就会成为该computed属性的依赖属性。
 
 * watch
     * watch一个回调函数对应一个被观察的属性，被观察的属性必须是本实例中的属性。
