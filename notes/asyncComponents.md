@@ -79,3 +79,5 @@ new Vue({
     }
 })
 ```
+
+## 附录：[从源码分析异步组件加载原理](https://www.cnblogs.com/greatdesert/p/11244251.html)
