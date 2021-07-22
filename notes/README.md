@@ -410,7 +410,7 @@ v-show会将所有子组件都渲染，然后根据条件来更改display切换�
 
 * v-if和动态组件有这比较大的切换开销，V-show有着较大的初始渲染开销，根据实际情况来选择使用。
 
-* v-if和动态组件相比，v-if可以在父组件中对子组件设置属性，而动态组件则不能。所以使用一般情况下使用v-if更好。
+* v-if和动态组件相比，v-if可以在父组件中对子组件设置属性，而动态组件则不能。所以使用一般情况下使用v-if更好,但是如果有多个子组件切换，使用v-if会拉长模板，这个时候使用动态组件比较合适。
 
 * 通过使用keep-alive我们可以弥补v-if、component与v-show的差距，实现保留组件状态。
 
@@ -579,7 +579,7 @@ v-model用于input，根据input类型的不同而行为不同，默认情况下
 
 注意：watch和computed在观察数组和对象的时候要小心，因为一不小心可能就会检测不到，具体可以参考文档。对于数组，watcher只能检测到
 'push','pop','shift','unshift','splice','sort''reverse'
-这些方法对数组的变动。Vue不能监测到数组索引赋值或者数组长度的变化，对于索引赋值可以使用Vue.set来赋值代替，或者使用splice方法，然后Vue能监测到。对于对象来说，由于响应式原理的限制,Vue并不能直接为一个对象添加响应式侦测，也就无法watch，但是vue为对象中的每一个property都添加了响应式，并且提供了一个deep选项，只要对象中任意的property的值发生变化，都会触发watch，从而实现我们对一个对象的watch；对于向一个对象中添加property和删除一个响应式的property，我们可以通过vm.$set和vm$delete方法来实现一个响应式property；这样，我们就实现了对一个对象的变动的watch。
+这些方法对数组的变动。Vue不能监测到数组索引赋值或者数组长度的变化，对于索引赋值可以使用Vue.set来赋值代替，或者使用splice方法，然后Vue能监测到,对于删除一个数组元素，则可以使用splice也可以使用vm.$delete，这些操作均是响应式的。对于对象来说，由于响应式原理的限制,Vue并不能直接为一个对象添加响应式侦测(因为vue监测的是哪个对象的引用，对象的变动不引发引用值的改变，无法触发set/get。)，也就无法watch，但是vue为对象中的每一个property都添加了响应式，并且提供了一个deep选项，只要对象中任意的property的值发生变化，都会触发watch，从而实现我们对一个对象的watch；对于向一个对象中添加property和删除一个响应式的property，我们可以通过vm.$set和vm$delete方法来实现一个响应式property；这样，我们就实现了对一个对象的变动的watch。
 
 总结：多个属性变动的变化引发的简单计算可以使用computed，不推荐在computed中使用异步操作；观察单个属性，需要使用异步以及大量复杂计算操作等使用watch。
 
@@ -671,7 +671,7 @@ data、computed、props中的数据都是响应式的。
 
 被 keep-alive 缓存的组件停用时调用。
 
-### 附 ![!生命周期钩子图示](https://github.com/comefromezero/vue-practice/blob/main/notes/img/lifecycle.png)
+### 附 ![生命周期钩子图示](https://github.com/comefromezero/vue-practice/blob/main/notes/img/lifecycle.png)
 
 ## Vue实例的加载过程
 
@@ -722,6 +722,6 @@ Vue的核心原理就是ES5增加的Object.defineProperty方法修改一个Objec
 
 具体看下面的这一篇：
 
-[深入Vue响应式原理]()
+[深入Vue响应式原理](https://github.com/comefromezero/vue-practice/blob/main/notes/ReactivityInDepth.md)
 
 
