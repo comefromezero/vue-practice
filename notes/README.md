@@ -762,3 +762,12 @@ Vue的核心原理就是ES5增加的Object.defineProperty方法修改一个Objec
 [深入Vue响应式原理](https://github.com/comefromezero/vue-practice/blob/main/notes/ReactivityInDepth.md)
 
 
+## 目前还未实际使用过的东西
+
+第一个：directive，自定义指令
+
+第二个：filter，过滤器
+
+第三个：渲染函数相关的内容
+
+
