@@ -1,24 +1,5 @@
 # demo
 
-## Project setup
-```
-npm install
-```
+该demo创建了一个图片组件以及使用该图片组件创建了一个轮播图组件。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+其中使用到了props vm.$attrs vm.$listenersa等父传子的办法。
