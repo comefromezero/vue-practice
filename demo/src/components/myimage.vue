@@ -9,7 +9,11 @@
        <img v-else
        class="myimage_inner"
        :style="imagestyle"
-       :src="src"> 
+       :src="src" 
+       v-bind="$attr"
+       v-on="$listeners"
+       > 
+        <!-- 通过v-bind和v-on将外部设定的html属性以及绑定的event回调绑定到当前img对象上。 -->
     </div>
 </template>
 
@@ -26,7 +30,7 @@ export default {
             //imageheight:0,
         }
     },
-    props:['src','fit','position','width','height'],
+    props:['src','fit','position','width','height'],//width和height是CSS的width与height,position同object-position，fit同object-fit。
     computed:{
         imagestyle(){
             let StyleObject = Objectfit.indexOf(this.fit)>-1?{'object-fit':this.fit}:{};
@@ -71,13 +75,16 @@ export default {
         loadImg(){
             this.loading = true;
             this.error = false;
+            /* 创建一个Image对象，用来测试img是否可以被加载成功，从而确定html标签的img对象是否能够加载成功，然后根据成功与否选择渲染。 */
             let Img = new Image();
             Img.onload = this.handleLoading;
             Img.onerror = this.handleError;
+            /* 绑定attr到当前Img对象，保持本Img对象与标签的attr一致（不包括clsss和style相关属性，因为CSS相关属性不影响加载；也不包括event回调处理，因为回调只有在加载之后才会触发。） */
             Object.keys(this.$attrs).forEach((key) => {
                 const value = this.$attrs[key];
                 Img.setAttribute(key, value);
             });
+            console.log(this.$attrs);
             Img.src = this.src;
         },
         handleLoading(){

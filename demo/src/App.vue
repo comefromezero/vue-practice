@@ -1,6 +1,6 @@
 <template>
     <div>
-        <myimage  v-for="item in imglist" :src="item.src" :key="item.src" :style="item.styel" :width="item.width" :height="item.height" :fit="item.fit"></myimage>
+        <myimage  v-for="item in imglist" :src="item.src" :key="item.src"  :width="item.width" :height="item.height" :fit="item.fit"></myimage>
         <button @click="ChangeSrc">按钮</button>
     </div>
 </template>
