@@ -10,7 +10,7 @@
        class="myimage_inner"
        :style="imagestyle"
        :src="src" 
-       v-bind="$attr"
+       v-bind="$attrs"
        v-on="$listeners"
        > 
         <!-- 通过v-bind和v-on将外部设定的html属性以及绑定的event回调绑定到当前img对象上。 -->
@@ -30,7 +30,7 @@ export default {
             //imageheight:0,
         }
     },
-    props:['src','fit','position','width','height'],//width和height是CSS的width与height,position同object-position，fit同object-fit。
+    props:['src','fit','position','width','height'],//width和height是CSS的width与height,position同object-position，fit同object-fit。始终指定width和height可以获得更好的用户体验。
     computed:{
         imagestyle(){
             let StyleObject = Objectfit.indexOf(this.fit)>-1?{'object-fit':this.fit}:{};
@@ -101,7 +101,7 @@ export default {
 </script>
 
 <style>
-.myimamge_inner,.myimage_loading,.myimage_error{
+.myimage_inner,.myimage_loading,.myimage_error{
     width: 100%;
     height: 100%;
 }
@@ -119,7 +119,9 @@ export default {
     overflow: hidden;
     margin: 3px;
     display: inline-block;
-}
+   /*  width:100%;
+    height:100%;
+ */}
 .myimage_loading_text,.myimage_error_text{
     overflow: hidden;
     text-overflow: ellipsis;
